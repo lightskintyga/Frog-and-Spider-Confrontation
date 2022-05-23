@@ -48,7 +48,7 @@ namespace sharpGame
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.OpenForms["Menu"].Dispose();
         }
 
         private void btn_question_Click(object sender, EventArgs e)
