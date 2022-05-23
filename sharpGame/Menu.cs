@@ -16,6 +16,7 @@ namespace sharpGame
         public Menu()
         {
             InitializeComponent();
+            Application.OpenForms["Form1"].Hide();
         }
 
         private void btn_play_MouseHover(object sender, EventArgs e)
