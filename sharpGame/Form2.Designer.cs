@@ -38,6 +38,7 @@ namespace sharpGame
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,13 +74,14 @@ namespace sharpGame
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label2.Font = new System.Drawing.Font("High Tower Text", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("High Tower Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(33, 93);
+            this.label2.Location = new System.Drawing.Point(34, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(495, 28);
+            this.label2.Size = new System.Drawing.Size(458, 44);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Побеждает тот, кто первым набирает 50 очков!";
+            this.label2.Text = "В данной игре нужно есть мух! Вы играете за лягушку! \r\nПобеждает тот, кто первым " +
+    "набирает 50 очков!";
             // 
             // label3
             // 
@@ -149,12 +151,26 @@ namespace sharpGame
             this.label5.Size = new System.Drawing.Size(150, 22);
             this.label5.TabIndex = 21;
             this.label5.Text = "Прыжок - пробел";
+            //
+            // label6
             // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label6.Font = new System.Drawing.Font("High Tower Text", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(34, 358);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(525, 22);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "!!! За съеденную муху лягушке начисляется 1 очко, пауку - 5 !!!";
+            //
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 411);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox3);
