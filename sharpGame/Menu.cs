@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sharpGame
@@ -31,7 +23,7 @@ namespace sharpGame
 
         private void btn_play_Click(object sender, EventArgs e)
         {
-            Application.OpenForms["Menu"].Dispose();
+            Application.OpenForms["Menu"].Dispose();    
             Game game = new Game();
             game.ShowDialog();
         }

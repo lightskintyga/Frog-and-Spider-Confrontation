@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace sharpGame
@@ -21,13 +13,13 @@ namespace sharpGame
             label_spiderWin.Visible = false;
         }
 
-        bool right, left, jump = true;
-        int jumpSpeed = 1;
-        int snakeSpeed = 1;
+        public static bool right, left, jump = true;
+        public static int jumpSpeed = 1;
+        public static int snakeSpeed = 1;
 
         Random random = new Random();
-        int spiderSpeed = 1, spd;
-        int frogScore, spiderScore, p;
+        public static int spiderSpeed = 1, spd;
+        public static int frogScore, spiderScore, p;
 
         void MakeGameLogic()
         {
@@ -35,110 +27,49 @@ namespace sharpGame
             {
                 if (x is PictureBox && x.Tag == "fly")
                 {
-                    x.Top -= 3;
-                    if (x.Top < 200)
-                        x.Top = 200;
+                    Fly.MaximumHeight(x);
 
-                    if (player.Bounds.IntersectsWith(x.Bounds))
-                    {
-                        frogScore += 1;
-                        lable_frog_score.Text = "Frog : " + frogScore;
-                        p = random.Next(100, 500);
-                        x.Location = new Point(p, 500);
-                    }
+                    Intersection.ContactPlayerWithFly(player, lable_frog_score, p, random, x);
 
-                    if (spider.Bounds.IntersectsWith(x.Bounds))
-                    {
-                        spiderScore += 5;
-                        label_spider_score.Text = "Spider : " + spiderScore;
-                        p = random.Next(100, 500);
-                        x.Location = new Point(p, 500);
-                    }
+                    Intersection.ContactSpiderWithFly(spider, label_spider_score, p, random, x);
 
-                    if (frogScore == 50)
-                    {
-                        timer1.Stop();
-                        label_frogWin.Visible = true;
-                        label_frogWin.BringToFront();
-                    }
+                    Winner.WinFrog(frogScore, timer1, label_frogWin);
 
-                    if (spiderScore == 50)
-                    {
-                        timer1.Stop();
-                        label_spiderWin.Visible = true;
-                        label_spiderWin.BringToFront();
-                    }
+                    Winner.WinSpider(spiderScore, timer1, label_spiderWin);
 
-                    if (player.Bounds.IntersectsWith(enemySnake.Bounds) || player.Bounds.IntersectsWith(spider.Bounds))
-                    {
-                        timer1.Stop();
-                        label_over.Visible = true;
-                        label_over.BringToFront();
-                    }
+                    Intersection.ContactPlayerWithSpiderAndSnake(player, enemySnake, spider, timer1, label_over);
                 }
             }
         }
 
         void MoveSnake()
         {
-            if (enemySnake.Left > 500)
-                snakeSpeed -= 1;
+            Snake.DirectRight(enemySnake);
 
-            if (enemySnake.Left < 50)
-                snakeSpeed = 1;
-            enemySnake.Left += snakeSpeed;
-            
-            if (spider.Top > 10)
-                spiderSpeed -= 4;
+            Snake.DirectLeft(enemySnake);
 
-            if (spider.Top < -200)
-            {
-                spd = random.Next(0, 550);
-                spider.Location = new Point(spd, -200);
-                spiderSpeed = 4;
-            }
-            spider.Top += spiderSpeed;
+            Spider.DirectDown(spider);
+
+            Spider.DirectUp(spider, random);
         }
 
         void MovePlayer()
         {
-            if (right == true)
-            {
-                player.Left += 2;
-                player.Image = Properties.Resources.frogRightOrig1;
-            }
+            Player.MoveRight(player, right);
 
-            if (left == true)
-            {
-                player.Left -= 2;
-                player.Image = Properties.Resources.frogLeftOrig1;
-            }
+            Player.MoveLeft(player, left);
 
-            if (jump == true && right)
-            {
-                player.Top -= 2;
-                player.Left += 3;
-                player.Image = Properties.Resources.frogRightOrig1;
-                jumpSpeed = 3;
-            }
+            Player.JumpRight(player, jump, right);
 
-            if (jump == true && left)
-            {
-                player.Top -= 2;
-                player.Left -= 3;
-                player.Image = Properties.Resources.frogLeftOrig1;
-                jumpSpeed = 3;
-            }
+            Player.JumpLeft(player, jump, left);
 
-            if (jump == false)
-            {
-                player.Top += jumpSpeed;
-                if (player.Bounds.IntersectsWith(water.Bounds))
-                {
-                    player.Top = water.Top - player.Height;
-                    jumpSpeed = 0;
-                }
-            }
+            Player.GoDown(player, jump, water);
+
+            Player.LimitUpperBorder(player);
+
+            Player.LimitRightBorder(player);
+
+            Player.LimitLeftBorder(player);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -149,27 +80,13 @@ namespace sharpGame
         }
 
         private void GameKeyDown(object sender, KeyEventArgs e)
-        {   
-            if (e.KeyCode == Keys.Right)
-                right = true;
-
-            if (e.KeyCode == Keys.Left)
-                left = true;
-
-            if (e.KeyCode == Keys.Space)
-                jump = true;
+        {
+            Keys.DownKeys(sender, e);
         }
 
         private void GameKeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Right)
-                right = false;
-
-            if (e.KeyCode == Keys.Left)
-                left = false;
-
-            if (e.KeyCode == Keys.Space)
-                jump = false;
+            Keys.UpKeys(sender, e);
         }
     }
 }
