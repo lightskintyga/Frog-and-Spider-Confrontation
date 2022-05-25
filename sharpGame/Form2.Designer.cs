@@ -151,7 +151,7 @@ namespace sharpGame
             this.label5.Size = new System.Drawing.Size(150, 22);
             this.label5.TabIndex = 21;
             this.label5.Text = "Прыжок - пробел";
-            //
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -164,7 +164,7 @@ namespace sharpGame
             this.label6.Size = new System.Drawing.Size(525, 22);
             this.label6.TabIndex = 22;
             this.label6.Text = "!!! За съеденную муху лягушке начисляется 1 очко, пауку - 5 !!!";
-            //
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
