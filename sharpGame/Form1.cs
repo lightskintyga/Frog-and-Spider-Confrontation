@@ -29,7 +29,8 @@ namespace sharpGame
                 timer1.Stop();
                 Menu option = new Menu();
                 option.ShowDialog();
-                Application.OpenForms["Form1"].Dispose();
+                if (Game.check == true)
+                    Application.OpenForms["Form1"].Dispose();
             }
         }
     }

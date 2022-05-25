@@ -28,12 +28,13 @@ namespace sharpGame
             }
         }
 
-        public static void ContactPlayerWithSpiderAndSnake(PictureBox player, PictureBox enemySnake, PictureBox spider, Timer timer1, Label label_over)
+        public static void ContactPlayerWithSpiderAndSnake(PictureBox player, PictureBox enemySnake, PictureBox spider, Timer timer1, Label label_over, PictureBox buttonRestart)
         {
             if (player.Bounds.IntersectsWith(enemySnake.Bounds) || player.Bounds.IntersectsWith(spider.Bounds))
             {
                 timer1.Stop();
                 label_over.Visible = true;
+                buttonRestart.Visible = true;
                 label_over.BringToFront();
             }
         }

@@ -11,9 +11,10 @@ namespace sharpGame
             label_over.Visible = false;
             label_frogWin.Visible = false;
             label_spiderWin.Visible = false;
+            buttonRestart.Visible = false;
         }
 
-        public static bool right, left, jump = true;
+        public static bool right, left, jump, check = true;
         public static int jumpSpeed = 1;
         public static int snakeSpeed = 1;
 
@@ -33,13 +34,18 @@ namespace sharpGame
 
                     Intersection.ContactSpiderWithFly(spider, label_spider_score, p, random, x);
 
-                    Winner.WinFrog(frogScore, timer1, label_frogWin);
+                    Winner.WinFrog(frogScore, timer1, label_frogWin, buttonRestart);
 
-                    Winner.WinSpider(spiderScore, timer1, label_spiderWin);
+                    Winner.WinSpider(spiderScore, timer1, label_spiderWin, buttonRestart);
 
-                    Intersection.ContactPlayerWithSpiderAndSnake(player, enemySnake, spider, timer1, label_over);
+                    Intersection.ContactPlayerWithSpiderAndSnake(player, enemySnake, spider, timer1, label_over, buttonRestart);
                 }
             }
+        }
+
+        private void buttonRestart_Click(object sender, EventArgs e)
+        {
+            Restart.Work();
         }
 
         void MoveSnake()

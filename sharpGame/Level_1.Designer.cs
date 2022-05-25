@@ -36,6 +36,7 @@ namespace sharpGame
             this.label_over = new System.Windows.Forms.Label();
             this.label_frogWin = new System.Windows.Forms.Label();
             this.label_spiderWin = new System.Windows.Forms.Label();
+            this.buttonRestart = new System.Windows.Forms.PictureBox();
             this.spider = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
             this.water = new System.Windows.Forms.PictureBox();
@@ -44,6 +45,7 @@ namespace sharpGame
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonRestart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.water)).BeginInit();
@@ -119,6 +121,17 @@ namespace sharpGame
             this.label_spiderWin.Size = new System.Drawing.Size(183, 28);
             this.label_spiderWin.TabIndex = 12;
             this.label_spiderWin.Text = "SPIDER WON!";
+            // 
+            // buttonRestart
+            // 
+            this.buttonRestart.Image = global::sharpGame.Properties.Resources.buttonReload;
+            this.buttonRestart.Location = new System.Drawing.Point(268, 218);
+            this.buttonRestart.Name = "buttonRestart";
+            this.buttonRestart.Size = new System.Drawing.Size(48, 48);
+            this.buttonRestart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.buttonRestart.TabIndex = 13;
+            this.buttonRestart.TabStop = false;
+            this.buttonRestart.Click += new System.EventHandler(this.buttonRestart_Click);
             // 
             // spider
             // 
@@ -218,6 +231,7 @@ namespace sharpGame
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(584, 411);
+            this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.lable_frog_score);
             this.Controls.Add(this.label_spider_score);
             this.Controls.Add(this.label_spiderWin);
@@ -237,6 +251,7 @@ namespace sharpGame
             this.Text = "Game";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameKeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameKeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.buttonRestart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.water)).EndInit();
@@ -265,5 +280,6 @@ namespace sharpGame
         private System.Windows.Forms.Label label_frogWin;
         private System.Windows.Forms.Label label_spiderWin;
         private System.Windows.Forms.PictureBox water;
+        private System.Windows.Forms.PictureBox buttonRestart;
     }
 }

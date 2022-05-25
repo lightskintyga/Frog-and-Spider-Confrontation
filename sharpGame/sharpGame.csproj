@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Restart.cs" />
     <Compile Include="Keys.cs" />
     <Compile Include="Spider.cs" />
     <Compile Include="Player.cs" />
@@ -287,6 +288,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\volumeOnTrue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonRestart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonRestartOrig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buttonReload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
